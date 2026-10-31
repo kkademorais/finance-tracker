@@ -4,6 +4,15 @@
 https://tiangolo.com/guides/virtual-environments/
 
 
+## Dependências do projeto:
+
+### SQLAlchemy
+ORM utilizado pra mapear classes pra dentro do banco de dados, trazendo abstração de gerenciamento do BD sem precisar escrever SQL.
+Traz uma camada de aplicação acima da API de conexão ao banco de dados. Dessa forma, o código de persistência e mapeamento das classes é o mesmo
+pra qualquer BD utilizado.
+Isso se deve à divisão do SQLAlchemy em duas APIs: ORM (mapeamento das classes) e Core (persistência, gerenciamento e conexão do BD)
+
+
 ### Comando utilizados
 `python -m venv .venv`: cria virtual environment na pasta .venv usando o module de venv do Python
 `.venv/Scripts/Activate`: ativa o venv 

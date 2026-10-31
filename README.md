@@ -628,6 +628,7 @@ consultar, editar e excluir compras, além de gerar extratos.
 -   [ ] Configurar SQLAlchemy.
 -   [ ] Criar model `Compra`.
 -   [ ] Criar model `Categoria`.
+-   [ ] Criar model `Catao`.
 -   [ ] Configurar relacionamento entre as tabelas.
 -   [ ] Criar primeira migration com Alembic.
 -   [ ] Testar inserção e consulta diretamente no banco.
