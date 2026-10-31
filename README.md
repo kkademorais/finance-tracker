@@ -128,6 +128,7 @@ Embora os requisitos iniciais mencionem valor, data e categoria, o campo
 
 Estrutura inicial recomendada:
 
+```
   Campo             Tipo conceitual            Obrigatório Exemplo
   ----------------- ------------------------ ------------- ------------------
   id                Inteiro                            Sim 1
@@ -139,6 +140,7 @@ Estrutura inicial recomendada:
   descricao         Texto                              Não Teclado mecânico
   forma_pagamento   Texto                              Não Crédito
   criado_em         Data e hora                        Sim Data do registro
+```
 
 **Importante:** `data_compra` representa quando a compra aconteceu;
 `criado_em` representa quando ela foi registrada no sistema.
@@ -162,24 +164,29 @@ variações inconsistentes na escrita dos nomes.
 
 ### Tabela `categorias`
 
+```
   Campo   Descrição
   ------- -------------------------
   id      Chave primária
   nome    Nome único da categoria
+```
 
 Exemplos: Alimentação, Transporte, Lazer, Compras online e Saúde.
 
 ### Tabela `cartoes`
 
+```
   Campo   Descrição
   ------- -------------------------
   id      Chave primária
   nome    Nome único do cartão
+```
 
 Exemplos: Banco do Brasil, Carrefour, Itau
 
 ### Tabela `compras`
 
+```
   Campo             Descrição
   ----------------- -------------------------------------
   id                Chave primária
@@ -191,6 +198,7 @@ Exemplos: Banco do Brasil, Carrefour, Itau
   cartoes_id        Chave estrangeira para `cartoes`
   forma_pagamento   Forma de pagamento opcional
   criado_em         Data e hora de criação do registro
+```
 
 Relacionamento: várias compras podem pertencer a uma mesma categoria
 (**N:1**).
@@ -328,6 +336,7 @@ produção.
 
 ## 4.5. Decisão recomendada
 
+```text
   -----------------------------------------------------------------------
   Etapa                   Banco                   Motivo
   ----------------------- ----------------------- -----------------------
@@ -338,6 +347,7 @@ produção.
   Produção                PostgreSQL              Robustez, concorrência
                                                   e operação contínua
   -----------------------------------------------------------------------
+```
 
 Utilizar **SQLAlchemy** como camada de acesso aos dados facilita a
 transição entre SQLite e PostgreSQL. Grande parte do código de
@@ -455,6 +465,7 @@ controle-compras/
 
 ### Responsabilidade de cada camada
 
+```text
   Componente       Responsabilidade
   ---------------- -------------------------------------------------------
   `core`           Configurações e conexão com o banco
@@ -467,6 +478,7 @@ controle-compras/
   `integrations`   Comunicação com serviços externos
   `utils`          Funções auxiliares
   `tests`          Testes automatizados
+```
 
 Distinções importantes:
 
@@ -483,6 +495,7 @@ Distinções importantes:
 
 Planejamento inicial:
 
+```
   Método   Endpoint                       Responsabilidade
   -------- ------------------------------ ---------------------------------------
   POST     `/compras`                     Registrar uma compra estruturada
@@ -498,6 +511,7 @@ Planejamento inicial:
   GET      `/extratos/exportar`           Exportar extrato para Excel
   POST     `/extratos/enviar-email`       Enviar extrato por e-mail
   GET      `/indicadores`                 Consultar indicadores
+```
 
 Exemplos de filtros:
 
@@ -561,6 +575,7 @@ total gasto:
 `\frac{\text{Total da categoria}}{\text{Total geral}}`{=tex}
 `\times 100`{=tex} \]
 
+```
 Exemplo:
 
   Categoria                  Total   Participação
@@ -569,6 +584,7 @@ Exemplo:
   Transporte            R\$ 250,00            20%
   Lazer                 R\$ 500,00            40%
   **Total**       **R\$ 1.250,00**       **100%**
+```
 
 A quantidade de compras por categoria pode ser apresentada como
 indicador separado. Não se deve confundir percentual do valor gasto com
@@ -762,6 +778,7 @@ substituto para ela.
 
 ### Etapa 2 --- Comandos
 
+```
   Comando         Ação
   --------------- ---------------------------------------
   `/start`        Iniciar interação
@@ -771,6 +788,7 @@ substituto para ela.
   `/total`        Consultar total gasto
   `/categorias`   Consultar divisão por categoria
   `/buscar`       Consultar compras por estabelecimento
+```
 
 Fluxo de registro:
 
@@ -929,6 +947,7 @@ Fluxo:
 
 ### Tecnologias possíveis
 
+```
   -----------------------------------------------------------------------
   Tecnologia                          Utilização
   ----------------------------------- -----------------------------------
@@ -940,6 +959,7 @@ Fluxo:
   SpeechRecognition                   Integração Python com mecanismos de
                                       reconhecimento
   -----------------------------------------------------------------------
+```
 
 ### Checklist
 
@@ -1091,6 +1111,7 @@ acompanhamento financeiro.
 
 ### Indicadores recomendados
 
+```
   -----------------------------------------------------------------------
   Indicador                           Cálculo ou finalidade
   ----------------------------------- -----------------------------------
@@ -1115,6 +1136,7 @@ acompanhamento financeiro.
   Média diária                        Total do período dividido pelo
                                       número de dias considerado
   -----------------------------------------------------------------------
+```
 
 ### Gráficos recomendados
 
@@ -1148,6 +1170,7 @@ imediatamente um frontend tradicional.
 
 # 8. Tecnologias recomendadas
 
+```
   Área              Tecnologia                Finalidade
   ----------------- ------------------------- ------------------------------
   Linguagem         Python                    Desenvolvimento
@@ -1170,6 +1193,7 @@ imediatamente um frontend tradicional.
   Proxy reverso     Nginx                     HTTPS e encaminhamento
   Produção          VPS Linux                 Hospedagem
   Dashboard         Streamlit (opcional)      Visualização dos indicadores
+```
 
 Não é necessário instalar todas as dependências no início. Cada
 tecnologia deve ser adicionada quando a funcionalidade correspondente
@@ -1375,6 +1399,7 @@ Estas são as principais referências para acompanhar o desenvolvimento:
 
 A arquitetura recomendada para o projeto é:
 
+```
   Decisão                  Escolha
   ------------------------ --------------
   Linguagem                Python
@@ -1389,6 +1414,7 @@ A arquitetura recomendada para o projeto é:
   Exportação               OpenPyXL
   Envio de e-mail          Resend
   Hospedagem               VPS + Docker
+```
 
 O principal princípio arquitetural é construir primeiro um sistema
 confiável de registro e consulta. Depois, adicionar diferentes formas de
